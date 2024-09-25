@@ -13,6 +13,11 @@
     --foreground: #ededed;
   }
 }
+@font-face {
+  font-family: 'gilory';
+  src: url('../../public/fonts/Gilroy-Medium.woff') format('woff2');
+  font-style: normal; /* Change to 'italic' if needed */
+}
 
 body {
   color: var(--foreground);
