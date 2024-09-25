@@ -4,7 +4,7 @@ import data from '../../dummyData/section1.json'
 const Section1 = () => {
   return (
     <div className=" grid xl:grid-cols-[60%_auto] font-gilory ">
-      <div className=' font-gilory bg-[#f2f5fb]  rounded-lg py-5 px-5'>
+      <div className=' font-gilory bg-[#f2f5fb]  rounded-lg py-5 px-5 border border-solid border-[#EEEEEE]'>
       <table className="w-full">
   <thead>
     <tr>
