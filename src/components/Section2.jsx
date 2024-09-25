@@ -3,6 +3,7 @@ import React from 'react'
 import MyImage1 from '../../public/images/video.png';
 import MyImage2 from '../../public/images/plus.png';
 import faqs from '../../dummyData/section2.json';
+import close from '../../public/images/close.png';
 
 import Image from 'next/image';
 import { useState } from 'react';
@@ -31,6 +32,20 @@ const Section2 = () => {
       setShowUnsolvable(!isChecked);
       setShowEscalation(isChecked);
     };
+
+    const [url, setUrl] = useState('');
+  const [relatedParts, setRelatedParts] = useState('');
+  const [answer, setAnswer] = useState('');
+
+  const handleTempButtonClick = (field, value) => {
+    if (field === 'url') {
+      setUrl(value);
+    } else if (field === 'relatedParts') {
+      setRelatedParts(value);
+    } else if (field === 'answer') {
+      setAnswer(value);
+    }
+  };
   
 
  
@@ -71,36 +86,95 @@ const Section2 = () => {
         </div>
 
 
+        <div className='pt-6 pb-3 font-gilory px-3'>
+      <h1 className='font-bold'>Compose your reply</h1>
 
-        <div className='pt-6 pb-3  font-gilory px-3' >
-              <h1 className='font-bold '>Compose your reply</h1>
-
-              <div className='grid grid-cols-1 md:grid-cols-2 gap-4 py-4'>
-            <div>
-              <label className='block mb-2 text-xs text-[#4F4F4F]'>URL</label>
-              <input type='text' className='border border-gray-300 rounded p-2 w-full' />
-              <button className='my-4 bg-[#F6F6F6] border border-solid border-[#D9D9D9] px-1 py-1 text-xs rounded'>Temp1</button> <button className='my-4 bg-[#F6F6F6] border border-solid border-[#D9D9D9] px-1 py-1 text-xs rounded '>Temp2</button>
-            </div>
-            <div>
-              <label className='block mb-2 text-xs text-[#4F4F4F]'>Related Parts</label>
-              <input type='text' className='border border-gray-300 rounded p-2 w-full' />
-              <button className='my-4 bg-[#F6F6F6] border border-solid border-[#D9D9D9] px-1 py-1 text-xs rounded'>Temp1</button> <button className='my-4 bg-[#F6F6F6] border border-solid border-[#D9D9D9] px-1 py-1 text-xs rounded '>Temp2</button>
-
-            </div>
-          </div>
-          <div grid grid-col-1>
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-4 py-4'>
+        <div>
           <label className='block mb-2 text-xs text-[#4F4F4F]'>URL</label>
-          <input type='text' className='border border-gray-300 rounded p-2 w-full' />
-          <div className='flex justify-between items-center' >
+          <input
+            type='text'
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            className='border border-gray-300 rounded p-2 w-full'
+          />
+          <button
+            className='my-4 mx-2 bg-[#F6F6F6] border border-solid border-[#D9D9D9] px-1 py-1 text-xs rounded'
+            onClick={() => handleTempButtonClick('url', 'https://example.com/temp1')}
+          >
+     <div className='flex justify-between items-center gap-2'> <span> Temp1</span> <Image src={close} className='w-2 h-2' alt='close'/> </div> 
 
-         <div><button className='my-4 bg-[#F6F6F6] border border-solid border-[#D9D9D9] px-1 py-1 text-xs rounded'>Temp1</button> <button className='my-4 bg-[#F6F6F6] border border-solid border-[#D9D9D9] px-1 py-1 text-xs rounded '>Temp2</button></div>
-         <div> <button className='bg-[#2B68E8] text-[#FFFFFF] text-sm px-3 py-2 rounded' >Post Comment</button></div> 
-           
-           </div>
-          </div>
- 
+          </button>
+          <button
+            className='my-4 bg-[#F6F6F6] border border-solid border-[#D9D9D9] px-1 py-1 text-xs rounded'
+            onClick={() => handleTempButtonClick('url', 'https://example.com/temp2')}
+          >
+      <div className='flex justify-between items-center gap-2'> <span> Temp2</span> <Image src={close} className='w-2 h-2' alt='close'/> </div> 
 
+          </button>
         </div>
+        
+        <div>
+          <label className='block mb-2 text-xs text-[#4F4F4F]'>Related Parts</label>
+          <input
+            type='text'
+            value={relatedParts}
+            onChange={(e) => setRelatedParts(e.target.value)}
+            className='border border-gray-300 rounded p-2 w-full'
+          />
+          <button
+            className='my-4 mx-2 bg-[#F6F6F6] border border-solid border-[#D9D9D9] px-1 py-1 text-xs rounded'
+            onClick={() => handleTempButtonClick('relatedParts', 'Part A, Part B')}
+          >
+        <div className='flex justify-between items-center gap-2'> <span> Temp1</span> <Image src={close} className='w-2 h-2' alt='close'/> </div> 
+          </button>
+          <button
+            className='my-4 bg-[#F6F6F6] border border-solid border-[#D9D9D9] px-1 py-1 text-xs rounded'
+            onClick={() => handleTempButtonClick('relatedParts', 'Part C, Part D')}
+          >
+      <div className='flex justify-between items-center gap-2'> <span> Temp2</span> <Image src={close} className='w-2 h-2' alt='close'/> </div> 
+
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <label className='block mb-2 text-xs text-[#4F4F4F]'>Your answer goes here</label>
+        <input
+          type='text'
+          value={answer}
+          onChange={(e) => setAnswer(e.target.value)}
+          className='border border-gray-300 rounded p-2 w-full'
+        />
+        <div className='flex justify-between items-center '>
+          <div>
+            <button
+              className='my-4 mx-2 bg-[#F6F6F6] border border-solid border-[#D9D9D9] px-1 py-1 text-xs rounded'
+              onClick={() => handleTempButtonClick('answer', 'This is a sample answer for Temp1.')}
+            >
+       <div className='flex justify-between items-center gap-2'> <span> Temp1</span> <Image src={close} className='w-2 h-2' alt='close'/> </div> 
+
+            </button>
+            <button
+              className='my-4 bg-[#F6F6F6] border border-solid border-[#D9D9D9] px-1 py-1 text-xs rounded'
+              onClick={() => handleTempButtonClick('answer', 'This is a sample answer for Temp2.')}
+            >
+        <div className='flex justify-between items-center gap-2'> <span> Temp2</span> <Image src={close} className='w-2 h-2' alt='close'/> </div> 
+
+            </button>
+          </div>
+          <div>
+            <button className='bg-[#2B68E8] text-[#FFFFFF] text-sm px-3 py-2 rounded'>Post Comment</button>
+          </div>
+        </div>
+      </div>
+    </div>
+        
+
+
+
+
+        
 
 
       </div>
